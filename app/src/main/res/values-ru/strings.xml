@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Клуб \"Олимп\"</string>
+    <string name="first_name">Имя</string>
+    <string name="last_name">Фамилия</string>
+    <string name="gender">Пол</string>
+    <string name="group">Группа</string>
+    <string name="unknown_gender">Неизвестен</string>
+    <string name="male">Мужской</string>
+    <string name="female">Женский</string>
+    <string name="save_member">Сохранить участника</string>
+    <string name="delete_member">Удалить участника</string>
+</resources>

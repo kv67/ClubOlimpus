@@ -1,0 +1,15 @@
+
+|
+java:S1450"`Remove the "editTextFirstName" field and declare it as a local variable in the relevant methods.(¸™£=8ÀºÊï.
+L
+java:S1068"*Remove this unused "gender" private field.(ûÂŞşıÿÿÿÿ8¦éçï.
+X	java:S125"<This block of commented-out lines of code should be removed.(†ä¿Ø8Ğ¼¹ğ.
+x
+java:S1450"\Remove the "spinnerGender" field and declare it as a local variable in the relevant methods.(ûÍÂ/8ø¿çï.
+y
+java:S1450"]Remove the "spinnerAdapter" field and declare it as a local variable in the relevant methods.(ĞÉà'8‡‹íğ.
+|
+java:S1450"_Remove the "editTextLastName" field and declare it as a local variable in the relevant methods.(ÂÃÇÓ8ÀºÊï.
+X	java:S125#"<This block of commented-out lines of code should be removed.(Ç¬›8·¯ñ.
+y
+java:S1450"\Remove the "editTextGroup" field and declare it as a local variable in the relevant methods.(ÏÀ˜ï8ÀºÊï.
