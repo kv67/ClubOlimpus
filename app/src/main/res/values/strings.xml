@@ -9,4 +9,7 @@
     <string name="female">Female</string>
     <string name="save_member">Save Member</string>
     <string name="delete_member">Delete Member</string>
+    <string name="all_members">All members:</string>
+    <string name="isertion_failed_msg">Data insertion failed</string>
+    <string name="data_saved_msg">Data saved successfully</string>
 </resources>

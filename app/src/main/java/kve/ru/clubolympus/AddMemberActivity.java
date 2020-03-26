@@ -1,5 +1,8 @@
 package kve.ru.clubolympus;
 
+import android.content.ContentResolver;
+import android.content.ContentValues;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -8,9 +11,19 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NavUtils;
+
+import static kve.ru.clubolympus.data.ClubOlympusContract.MemberEntry.COLUMN_FIRST_NAME;
+import static kve.ru.clubolympus.data.ClubOlympusContract.MemberEntry.COLUMN_GENDER;
+import static kve.ru.clubolympus.data.ClubOlympusContract.MemberEntry.COLUMN_GROUP_NAME;
+import static kve.ru.clubolympus.data.ClubOlympusContract.MemberEntry.COLUMN_LAST_NAME;
+import static kve.ru.clubolympus.data.ClubOlympusContract.MemberEntry.CONTENT_URI;
+import static kve.ru.clubolympus.data.ClubOlympusContract.MemberEntry.GENDER_FEMALE;
+import static kve.ru.clubolympus.data.ClubOlympusContract.MemberEntry.GENDER_MALE;
+import static kve.ru.clubolympus.data.ClubOlympusContract.MemberEntry.GENDER_UNKNOWN;
 
 public class AddMemberActivity extends AppCompatActivity {
 
@@ -50,19 +63,19 @@ public class AddMemberActivity extends AppCompatActivity {
         String genderStr = (String) parent.getItemAtPosition(position);
         if (!genderStr.isEmpty()) {
           if (genderStr.equals(getResources().getString(R.string.male))) {
-            gender = 1;
+            gender = GENDER_MALE;
           } else
             if (genderStr.equals(getResources().getString(R.string.female))) {
-              gender = 2;
+              gender = GENDER_FEMALE;
             } else {
-              gender = 0;
+              gender = GENDER_UNKNOWN;
             }
         }
       }
 
       @Override
       public void onNothingSelected(AdapterView<?> parent) {
-        gender = 0;
+        gender = GENDER_UNKNOWN;
       }
     });
 
@@ -78,6 +91,7 @@ public class AddMemberActivity extends AppCompatActivity {
   public boolean onOptionsItemSelected(MenuItem item) {
     switch (item.getItemId()) {
       case R.id.save_member:
+        insertMember();
         return true;
       case R.id.delete_member:
         return true;
@@ -88,4 +102,21 @@ public class AddMemberActivity extends AppCompatActivity {
 
     return super.onOptionsItemSelected(item);
   }
+
+  private void insertMember() {
+    ContentValues contentValues = new ContentValues();
+    contentValues.put(COLUMN_FIRST_NAME, editTextFirstName.getText().toString().trim());
+    contentValues.put(COLUMN_LAST_NAME, editTextLastName.getText().toString().trim());
+    contentValues.put(COLUMN_GROUP_NAME, editTextGroup.getText().toString().trim());
+    contentValues.put(COLUMN_GENDER, gender);
+
+    ContentResolver contentResolver = getContentResolver();
+    Uri uri = contentResolver.insert(CONTENT_URI, contentValues);
+    if (uri == null) {
+      Toast.makeText(this, R.string.isertion_failed_msg, Toast.LENGTH_LONG).show();
+    } else {
+      Toast.makeText(this, R.string.data_saved_msg, Toast.LENGTH_LONG).show();
+    }
+  }
+
 }

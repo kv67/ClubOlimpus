@@ -10,4 +10,7 @@
     <string name="female">Женский</string>
     <string name="save_member">Сохранить участника</string>
     <string name="delete_member">Удалить участника</string>
+    <string name="all_members">Все участники:</string>
+    <string name="isertion_failed_msg">Ошибка при добавлении данных</string>
+    <string name="data_saved_msg">Данные успешно сохранены</string>
 </resources>
