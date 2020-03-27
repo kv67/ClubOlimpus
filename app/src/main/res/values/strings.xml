@@ -12,4 +12,5 @@
     <string name="all_members">All members:</string>
     <string name="isertion_failed_msg">Data insertion failed</string>
     <string name="data_saved_msg">Data saved successfully</string>
+    <string name="error_msg">"Error: "</string>
 </resources>

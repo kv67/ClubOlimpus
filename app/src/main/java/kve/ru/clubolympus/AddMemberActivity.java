@@ -111,11 +111,15 @@ public class AddMemberActivity extends AppCompatActivity {
     contentValues.put(COLUMN_GENDER, gender);
 
     ContentResolver contentResolver = getContentResolver();
-    Uri uri = contentResolver.insert(CONTENT_URI, contentValues);
-    if (uri == null) {
-      Toast.makeText(this, R.string.isertion_failed_msg, Toast.LENGTH_LONG).show();
-    } else {
-      Toast.makeText(this, R.string.data_saved_msg, Toast.LENGTH_LONG).show();
+    try {
+      Uri uri = contentResolver.insert(CONTENT_URI, contentValues);
+      if (uri == null) {
+        Toast.makeText(this, R.string.isertion_failed_msg, Toast.LENGTH_LONG).show();
+      } else {
+        Toast.makeText(this, R.string.data_saved_msg, Toast.LENGTH_LONG).show();
+      }
+    } catch (IllegalArgumentException e) {
+      Toast.makeText(this, getString(R.string.error_msg) + e.getMessage(), Toast.LENGTH_LONG).show();
     }
   }
 

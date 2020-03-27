@@ -5,11 +5,13 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.provider.BaseColumns;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import kve.ru.clubolympus.adapters.MembersCursorAdapter;
 
 import static kve.ru.clubolympus.data.ClubOlympusContract.MemberEntry.COLUMN_FIRST_NAME;
 import static kve.ru.clubolympus.data.ClubOlympusContract.MemberEntry.COLUMN_GENDER;
@@ -19,14 +21,14 @@ import static kve.ru.clubolympus.data.ClubOlympusContract.MemberEntry.CONTENT_UR
 
 public class MainActivity extends AppCompatActivity {
 
-  private TextView textViewData;
+  private ListView listViewMembers;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
-    textViewData = findViewById(R.id.textViewData);
+    listViewMembers = findViewById(R.id.listViewMembers);
 
     FloatingActionButton floatingActionButton = findViewById(R.id.floatingActionButton);
     floatingActionButton.setOnClickListener(new View.OnClickListener() {
@@ -49,12 +51,7 @@ public class MainActivity extends AppCompatActivity {
         COLUMN_GROUP_NAME};
     Cursor cursor = getContentResolver().query(CONTENT_URI, projection, null, null, null);
 
-    textViewData.setText(getString(R.string.all_members) + "\n\n");
-    while (cursor.moveToNext()) {
-      String str =
-          cursor.getInt(cursor.getColumnIndex(BaseColumns._ID)) + " " + cursor.getString(cursor.getColumnIndex(COLUMN_FIRST_NAME)) + " " + cursor.getString(cursor.getColumnIndex(COLUMN_LAST_NAME)) + " " + cursor.getInt(cursor.getColumnIndex(COLUMN_GENDER)) + " " + cursor.getString(cursor.getColumnIndex(COLUMN_GROUP_NAME)) + "\n";
-      textViewData.append(str);
-    }
-    cursor.close();
+    MembersCursorAdapter adapter = new MembersCursorAdapter(this, cursor);
+    listViewMembers.setAdapter(adapter);
   }
 }

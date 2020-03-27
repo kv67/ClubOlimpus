@@ -13,4 +13,5 @@
     <string name="all_members">Все участники:</string>
     <string name="isertion_failed_msg">Ошибка при добавлении данных</string>
     <string name="data_saved_msg">Данные успешно сохранены</string>
+    <string name="error_msg">"Ошибка: "</string>
 </resources>
