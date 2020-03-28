@@ -32,10 +32,10 @@ public class MembersCursorAdapter extends CursorAdapter {
 
   @Override
   public void bindView(View view, Context context, Cursor cursor) {
-    TextView firstName = view.findViewById(R.id.textViewFirstName);
-    TextView lastName = view.findViewById(R.id.textViewLastName);
-    TextView gender = view.findViewById(R.id.textViewGender);
-    TextView group = view.findViewById(R.id.textViewGroup);
+    TextView firstName = view.findViewById(R.id.textViewMmbFirstName);
+    TextView lastName = view.findViewById(R.id.textViewMmbLastName);
+    TextView gender = view.findViewById(R.id.textViewMmbGender);
+    TextView group = view.findViewById(R.id.textViewMmbGroup);
 
     firstName.setText(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_FIRST_NAME)));
     lastName.setText(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_LAST_NAME)));

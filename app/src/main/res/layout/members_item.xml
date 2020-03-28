@@ -6,7 +6,7 @@
     android:padding="8dp">
 
     <TextView
-        android:id="@+id/textViewFirstNameLbl"
+        android:id="@+id/textViewMmbFirstNameLbl"
         android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -18,17 +18,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textViewFirstName"
+        android:id="@+id/textViewMmbFirstName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/textViewFirstNameLbl"
+        app:layout_constraintStart_toEndOf="@+id/textViewMmbFirstNameLbl"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textViewLastNameLbl"
+        android:id="@+id/textViewMmbLastNameLbl"
         android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -37,20 +37,20 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewFirstNameLbl" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewMmbFirstNameLbl" />
 
     <TextView
-        android:id="@+id/textViewLastName"
+        android:id="@+id/textViewMmbLastName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/textViewLastNameLbl"
-        app:layout_constraintTop_toBottomOf="@+id/textViewFirstName" />
+        app:layout_constraintStart_toEndOf="@+id/textViewMmbLastNameLbl"
+        app:layout_constraintTop_toBottomOf="@+id/textViewMmbFirstName" />
 
     <TextView
-        android:id="@+id/textViewGenderLbl"
+        android:id="@+id/textViewMmbGenderLbl"
         android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -59,20 +59,20 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewLastNameLbl" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewMmbLastNameLbl" />
 
     <TextView
-        android:id="@+id/textViewGender"
+        android:id="@+id/textViewMmbGender"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/textViewGenderLbl"
-        app:layout_constraintTop_toBottomOf="@+id/textViewLastName" />
+        app:layout_constraintStart_toEndOf="@+id/textViewMmbGenderLbl"
+        app:layout_constraintTop_toBottomOf="@+id/textViewMmbLastName" />
 
     <TextView
-        android:id="@+id/textViewGroupLbl"
+        android:id="@+id/textViewMmbGroupLbl"
         android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -81,15 +81,15 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewGenderLbl" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewMmbGenderLbl" />
 
     <TextView
-        android:id="@+id/textViewGroup"
+        android:id="@+id/textViewMmbGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/textViewGroupLbl"
-        app:layout_constraintTop_toBottomOf="@+id/textViewGender" />
+        app:layout_constraintStart_toEndOf="@+id/textViewMmbGroupLbl"
+        app:layout_constraintTop_toBottomOf="@+id/textViewMmbGender" />
 </androidx.constraintlayout.widget.ConstraintLayout>
