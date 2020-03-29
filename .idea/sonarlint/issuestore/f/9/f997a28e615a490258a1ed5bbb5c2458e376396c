@@ -1,4 +1,9 @@
 
-]	java:S125:"<This block of commented-out lines of code should be removed.(ˆ½Ì†úÿÿÿÿ8‹ñ°†’.
-Q
-java:S1128"4Remove this unused import 'android.widget.ListView'.(Œ‰Ö×8¶ ­‚’.
+„
+java:S1450%"bRemove the "recyclerViewMembers" field and declare it as a local variable in the relevant methods.(Œˆ°¡ıÿÿÿÿ8è‹à—’.
+^	java:S125ˆ"<This block of commented-out lines of code should be removed.(™¥¸üùÿÿÿÿ8Ù—¥“’.
+Y	java:S125"<This block of commented-out lines of code should be removed.(Ì×‡Ú8ùÁË“’.
+N
+java:S1144†"0Remove this unused private "displayData" method.(‰çí”8Ù—¥“’.
+‡
+java:S1488•"dImmediately return this expression instead of assigning it to the temporary variable "cursorLoader".(Í‹Õàıÿÿÿÿ8Ù—¥“’.

@@ -34,7 +34,6 @@ import static kve.ru.clubolympus.data.ClubOlympusContract.MemberEntry.CONTENT_UR
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
   private static final int LOADER_ID = 123;
-  private RecyclerView recyclerViewMembers;
   private MembersAdapter adapter;
 
   @Override
@@ -42,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
-    recyclerViewMembers = findViewById(R.id.recyclerViewMembers);
+    RecyclerView recyclerViewMembers = findViewById(R.id.recyclerViewMembers);
     recyclerViewMembers.setLayoutManager(new LinearLayoutManager(this));
     adapter = new MembersAdapter(this);
     adapter.setOnMemberClickListener(new MembersAdapter.OnMemberClickListener() {
@@ -125,30 +124,12 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     builder.create().show();
   }
 
-//  @Override
-//  protected void onStart() {
-//    super.onStart();
-//    // displayData();
-//  }
-
-  private void displayData() {
-//    String[] projection = {BaseColumns._ID, COLUMN_FIRST_NAME, COLUMN_LAST_NAME, COLUMN_GENDER,
-//        COLUMN_GROUP_NAME};
-//    Cursor cursor = getContentResolver().query(CONTENT_URI, projection, null, null, null);
-//    //  MembersCursorAdapter adapter = new MembersCursorAdapter(this, cursor);
-//    MembersAdapter adapter = new MembersAdapter(this, cursor);
-//    recyclerViewMembers.setAdapter(adapter);
-//    adapter.notifyDataSetChanged();
-  }
-
   @NonNull
   @Override
   public Loader<Cursor> onCreateLoader(int id, @Nullable Bundle args) {
     String[] projection = {BaseColumns._ID, COLUMN_FIRST_NAME, COLUMN_LAST_NAME, COLUMN_GENDER,
         COLUMN_GROUP_NAME};
-    CursorLoader cursorLoader = new CursorLoader(this, CONTENT_URI, projection, null, null, null);
-
-    return cursorLoader;
+    return new CursorLoader(this, CONTENT_URI, projection, null, null, null);
   }
 
   @Override

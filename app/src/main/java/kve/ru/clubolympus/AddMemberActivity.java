@@ -42,7 +42,6 @@ public class AddMemberActivity extends AppCompatActivity implements LoaderManage
   private EditText editTextLastName;
   private EditText editTextGroup;
   private Spinner spinnerGender;
-  private ArrayAdapter spinnerAdapter;
   // private List<String> spinnerList = new ArrayList<>();
   private Uri currentMemberUri;
   private int gender = 0;
@@ -72,7 +71,7 @@ public class AddMemberActivity extends AppCompatActivity implements LoaderManage
 //    spinnerList.add(getString(R.string.female));
 //    spinnerAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, spinnerList);
 
-    spinnerAdapter = ArrayAdapter.createFromResource(this, R.array.array_gender,
+    ArrayAdapter spinnerAdapter = ArrayAdapter.createFromResource(this, R.array.array_gender,
         android.R.layout.simple_spinner_item);
     spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
     spinnerGender.setAdapter(spinnerAdapter);
@@ -130,6 +129,8 @@ public class AddMemberActivity extends AppCompatActivity implements LoaderManage
       case android.R.id.home:
         NavUtils.navigateUpFromSameTask(this);
         return true;
+      default:
+        break;
     }
 
     return super.onOptionsItemSelected(item);
@@ -171,10 +172,9 @@ public class AddMemberActivity extends AppCompatActivity implements LoaderManage
   public Loader<Cursor> onCreateLoader(int id, @Nullable Bundle args) {
     String[] projection = {BaseColumns._ID, COLUMN_FIRST_NAME, COLUMN_LAST_NAME, COLUMN_GENDER,
         COLUMN_GROUP_NAME};
-    CursorLoader cursorLoader = new CursorLoader(this, currentMemberUri, projection, null, null,
+    return new CursorLoader(this, currentMemberUri, projection, null, null,
         null);
 
-    return cursorLoader;
   }
 
   @Override

@@ -1,8 +1,8 @@
 
-x
-java:S1450!"\Remove the "spinnerGender" field and declare it as a local variable in the relevant methods.(ûÍÂ/8Ø®»˜‘.
-C	java:S131\""Add a default case to this switch.(øå´¡ÿÿÿÿÿ8Ø®»˜‘.
-X	java:S1252"<This block of commented-out lines of code should be removed.(Ç¬›8Ø®»˜‘.
-X	java:S125#"<This block of commented-out lines of code should be removed.(†ä¿Ø8Ø®»˜‘.
+‡
+java:S1488®"dImmediately return this expression instead of assigning it to the temporary variable "cursorLoader".(ğŸûÿÿÿÿ8ƒğ–’.
+X	java:S125F"<This block of commented-out lines of code should be removed.(Ç¬›8Ø®»˜‘.
 y
-java:S1450""]Remove the "spinnerAdapter" field and declare it as a local variable in the relevant methods.(ĞÉà'8Ø®»˜‘.
+java:S1450-"]Remove the "spinnerAdapter" field and declare it as a local variable in the relevant methods.(ĞÉà'8ò™­•’.
+C	java:S131y""Add a default case to this switch.(øå´¡ÿÿÿÿÿ8Ø®»˜‘.
+X	java:S125."<This block of commented-out lines of code should be removed.(†ä¿Ø8Ø®»˜‘.
