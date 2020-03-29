@@ -2,6 +2,7 @@ package kve.ru.clubolympus.adapters;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.provider.BaseColumns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,10 +24,30 @@ public class MembersAdapter extends RecyclerView.Adapter<MembersAdapter.MembersV
 
   private Context context;
   private Cursor cursor;
+  private OnMemberClickListener onMemberClickListener;
 
-  public MembersAdapter(Context context, Cursor cursor) {
+  public interface OnMemberClickListener {
+    void onMemberClick(long id);
+  }
+
+  public MembersAdapter(Context context) {
     this.context = context;
+  }
+
+  public long getMemberId(int position) {
+    if (cursor.moveToPosition(position)) {
+      return cursor.getLong(cursor.getColumnIndexOrThrow(BaseColumns._ID));
+    }
+    return 0;
+  }
+
+  public void setOnMemberClickListener(OnMemberClickListener onMemberClickListener) {
+    this.onMemberClickListener = onMemberClickListener;
+  }
+
+  public void setCursor(Cursor cursor) {
     this.cursor = cursor;
+    notifyDataSetChanged();
   }
 
   @NonNull
@@ -39,7 +60,7 @@ public class MembersAdapter extends RecyclerView.Adapter<MembersAdapter.MembersV
 
   @Override
   public void onBindViewHolder(@NonNull MembersViewHolder holder, int position) {
-    if (cursor.moveToPosition(position)) {
+    if (cursor != null && cursor.moveToPosition(position)) {
       holder.textViewFirstName.setText(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_FIRST_NAME)));
       holder.textViewLastName.setText(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_LAST_NAME)));
       holder.textViewGroup.setText(cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_GROUP_NAME)));
@@ -59,7 +80,11 @@ public class MembersAdapter extends RecyclerView.Adapter<MembersAdapter.MembersV
 
   @Override
   public int getItemCount() {
-    return cursor.getCount();
+    if (cursor != null) {
+      return cursor.getCount();
+    }
+
+    return 0;
   }
 
   class MembersViewHolder extends RecyclerView.ViewHolder {
@@ -75,6 +100,14 @@ public class MembersAdapter extends RecyclerView.Adapter<MembersAdapter.MembersV
       textViewLastName = itemView.findViewById(R.id.textViewMmbLastName);
       textViewGender = itemView.findViewById(R.id.textViewMmbGender);
       textViewGroup = itemView.findViewById(R.id.textViewMmbGroup);
+      itemView.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+          if (onMemberClickListener != null && cursor != null && cursor.moveToPosition(getAdapterPosition())) {
+            onMemberClickListener.onMemberClick(cursor.getLong(cursor.getColumnIndexOrThrow(BaseColumns._ID)));
+          }
+        }
+      });
     }
   }
 

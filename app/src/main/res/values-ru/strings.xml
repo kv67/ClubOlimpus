@@ -14,4 +14,12 @@
     <string name="isertion_failed_msg">Ошибка при добавлении данных</string>
     <string name="data_saved_msg">Данные успешно сохранены</string>
     <string name="error_msg">"Ошибка: "</string>
+    <string name="add_member_title">Добавление члена клуба</string>
+    <string name="edit_member_title">Изменение члена клуба</string>
+    <string name="update_failed_msg">Ошибка при изменении данных</string>
+    <string name="ask_for_delete_msg">Вы хотите удалить члена клуба?</string>
+    <string name="delete_dialog_btn">Удалить</string>
+    <string name="cancel_dialog_btn">Отмена</string>
+    <string name="delete_failed_msg">Ошибка при удалении данных</string>
+    <string name="member_deleted_msg">Член клуба удален</string>
 </resources>

@@ -65,6 +65,7 @@ public class OlympusContentProvider extends ContentProvider {
         throw new IllegalArgumentException("Incorrect URI: " + uri);
     }
 
+    cursor.setNotificationUri(getContext().getContentResolver(), uri);
     return cursor;
   }
 
@@ -95,6 +96,8 @@ public class OlympusContentProvider extends ContentProvider {
           Log.e("insertMethod", "Data insertion failed");
           return null;
         }
+
+        getContext().getContentResolver().notifyChange(uri, null);
         return ContentUris.withAppendedId(uri, id);
       default:
         throw new IllegalArgumentException("Incorrect URI: " + uri);
@@ -105,16 +108,24 @@ public class OlympusContentProvider extends ContentProvider {
   public int delete(Uri uri, String selection, String[] selectionArgs) {
     SQLiteDatabase db = dbHelper.getWritableDatabase();
     int match = uriMatcher.match(uri);
+    int rowsDeleted = 0;
     switch (match) {
       case TABLE_CODE:
-        return db.delete(TABLE_NAME, selection, selectionArgs);
+        rowsDeleted = db.delete(TABLE_NAME, selection, selectionArgs);
+        break;
       case RECORD_CODE:
         selection = BaseColumns._ID + "=?";
         selectionArgs = new String[]{String.valueOf(ContentUris.parseId(uri))};
-        return db.delete(TABLE_NAME, selection, selectionArgs);
+        rowsDeleted = db.delete(TABLE_NAME, selection, selectionArgs);
+        break;
       default:
         throw new IllegalArgumentException("Incorrect URI: " + uri);
     }
+
+    if (rowsDeleted > 0) {
+      getContext().getContentResolver().notifyChange(uri, null);
+    }
+    return rowsDeleted;
   }
 
   @Override
@@ -137,16 +148,23 @@ public class OlympusContentProvider extends ContentProvider {
 
     SQLiteDatabase db = dbHelper.getWritableDatabase();
     int match = uriMatcher.match(uri);
+    int rowsUpdated = 0;
     switch (match) {
       case TABLE_CODE:
-        return db.update(TABLE_NAME, values, selection, selectionArgs);
+        rowsUpdated = db.update(TABLE_NAME, values, selection, selectionArgs);
+        break;
       case RECORD_CODE:
         selection = BaseColumns._ID + "=?";
         selectionArgs = new String[]{String.valueOf(ContentUris.parseId(uri))};
-        return db.update(TABLE_NAME, values, selection, selectionArgs);
+        rowsUpdated = db.update(TABLE_NAME, values, selection, selectionArgs);
+        break;
       default:
         throw new IllegalArgumentException("Incorrect URI: " + uri);
     }
+    if (rowsUpdated > 0) {
+      getContext().getContentResolver().notifyChange(uri, null);
+    }
+    return rowsUpdated;
   }
 
   @Override

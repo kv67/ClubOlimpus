@@ -13,4 +13,12 @@
     <string name="isertion_failed_msg">Data insertion failed</string>
     <string name="data_saved_msg">Data saved successfully</string>
     <string name="error_msg">"Error: "</string>
+    <string name="add_member_title">Add a member</string>
+    <string name="edit_member_title">Edit the member</string>
+    <string name="update_failed_msg">Data updating failed</string>
+    <string name="ask_for_delete_msg">Do you want delete the member?</string>
+    <string name="delete_dialog_btn">Delete</string>
+    <string name="cancel_dialog_btn">Cancel</string>
+    <string name="delete_failed_msg">Data deleting failed</string>
+    <string name="member_deleted_msg">Member is deleted</string>
 </resources>
